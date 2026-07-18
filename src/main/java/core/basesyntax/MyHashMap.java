@@ -3,8 +3,8 @@ package core.basesyntax;
 public class MyHashMap<K, V> implements MyMap<K, V> {
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
-    private int size = 0;
     static final int capacity = DEFAULT_INITIAL_CAPACITY;
+    private int size = 0;
     private Node<K, V>[] table;
 
     @SuppressWarnings("unchecked")
