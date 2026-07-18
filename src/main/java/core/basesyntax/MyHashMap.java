@@ -3,9 +3,9 @@ package core.basesyntax;
 public class MyHashMap<K, V> implements MyMap<K, V> {
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
-    int size = 0;
-    int capacity = DEFAULT_INITIAL_CAPACITY;
-    Node<K, V>[] table;
+    private int size = 0;
+    private int capacity = DEFAULT_INITIAL_CAPACITY;
+    private Node<K, V>[] table;
 
     @SuppressWarnings("unchecked")
     public MyHashMap() {
@@ -80,10 +80,10 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     }
 
     static class Node<K,V> {
-        final int hash;
-        final K key;
-        V value;
-        Node<K,V> next;
+        private final int hash;
+        private final K key;
+        private V value;
+        private Node<K,V> next;
 
         Node(int hash, K key, V value, Node<K,V> next) {
             this.hash = hash;
