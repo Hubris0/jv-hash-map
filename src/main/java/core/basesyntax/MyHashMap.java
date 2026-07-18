@@ -4,7 +4,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
     private int size = 0;
-    private int capacity = DEFAULT_INITIAL_CAPACITY;
+    static final int capacity = DEFAULT_INITIAL_CAPACITY;
     private Node<K, V>[] table;
 
     @SuppressWarnings("unchecked")
@@ -48,8 +48,22 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         return size;
     }
 
-    private boolean keysEqual(K a, K b) {
-        return a == null ? b == null : a.equals(b);
+    static class Node<K,V> {
+        private final int hash;
+        private final K key;
+        private V value;
+        private Node<K,V> next;
+
+        public Node(int hash, K key, V value, Node<K,V> next) {
+            this.hash = hash;
+            this.key = key;
+            this.value = value;
+            this.next = next;
+        }
+    }
+
+    private boolean keysEqual(K firstKey, K secondKey) {
+        return firstKey == null ? secondKey == null : firstKey.equals(secondKey);
     }
 
     private int hash(K key) {
@@ -78,19 +92,4 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
             }
         }
     }
-
-    static class Node<K,V> {
-        private final int hash;
-        private final K key;
-        private V value;
-        private Node<K,V> next;
-
-        Node(int hash, K key, V value, Node<K,V> next) {
-            this.hash = hash;
-            this.key = key;
-            this.value = value;
-            this.next = next;
-        }
-    }
-
 }
